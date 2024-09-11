@@ -11,7 +11,7 @@ void initdate(struct date *ptrdate)
     ptrdate-> month=1;
     ptrdate->year = 2000;
 }
-void  acceptDateOnConsole(struct date *ptrdate)
+void acceptDateOnConsole(struct date *ptrdate)
 {
     printf("enter date : ");
     scanf("%d%d%d",&ptrdate->day,&ptrdate->month,&ptrdate->year);
