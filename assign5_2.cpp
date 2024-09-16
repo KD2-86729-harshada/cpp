@@ -7,7 +7,6 @@ class student
     const int rollNumber;
     static int genrollno;
 
-
 public: 
     student():rollNumber(++genrollno)
     {
@@ -28,9 +27,14 @@ public:
         cout<<"gender = "<<gender<<endl;
     }
 };
+
+int student :: genrollno = 101;
 int main()
 {
-    student s1;
-    s1.printStudent();
-    //student*arr[5];
+    // student s1;
+    // s1.printStudent();
+    student*arr[5];
+    arr[0]=new student();
+    arr[0]->printStudent();
+    arr[1] = new student(1,"Harsha","female");
 }
