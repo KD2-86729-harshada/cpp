@@ -69,7 +69,7 @@ int main()
 
     for (int i = 0; i < 5; i++)
     {
-        int h, m, s;
+        //int h, m, s;
         times[i].acceptTime();
         // cout<<" Time : "<<times[i].getHour()<<":"<<times[i].getMinute()<< ":"<<times[i].getSeconds()<<endl;
     }
