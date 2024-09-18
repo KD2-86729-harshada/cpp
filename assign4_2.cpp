@@ -4,6 +4,7 @@ class Stack
 {
     int top;
     int size;
+    int *ptr;
 public: 
     Stack(int size)
     {

@@ -8,48 +8,73 @@ class employee
 public:
     employee()
     {
-        cout<<"Employee()";
+       
     }
     employee(int id, double salaray)
     {
-
+        this->id=id;
+        this->salary= salaray;
     }
     void setId(int id)
     {
-
+        this->id=id;
     }
     int getId()
     {
         return id;
     }
+
+    void setSalaray(double salary)
+    {
+        this->salary=salary;
+    }
     double getSalary()
     {
         return salary;
     }
-    void accept()
+    virtual void accept()
     {
-
+        cout<<"enter empid = ";
+        cin>>id;
+        cout<<"enter salary = ";
+        cin>>salary;
     }
-    void display()
+    virtual void display()
     {
-
+        cout<<"empid : "<<id<<endl;
+        cout<<"salary : "<<salary<<endl;
     }
 };
-class manger: public employee
+
+class manger: virtual public employee
 {
     double bonus;
-public:
+
+protected:
+    void acceptManger()
+    {
+        cout<<"Enter the bonus : ";
+        cin>>bonus;
+    }
+
+    void displayManger()
+    {
+        cout<<"Bonus : "<<bonus<<endl;
+    }
+
+public: 
     manger()
     {
-        cout<<"manger()";
+        
     }
     manger(double bonus, int id, double salary)
     {
+        this->bonus=bonus;
 
     }
     void setBonus(int bonus)
     {
-
+        this->bonus=bonus;
     }
     double getBonus()
     {
@@ -57,38 +82,42 @@ public:
     }
     void accept()
     {
-
+        employee::accept();
+        acceptManger();
     }
     void display()
     {
-
+        employee::display();
+        display();
     }
-
-    void acceptManger()
-    {
  
-    }
-    void displayManger()
-    {
-        
-    }
-    
 };
-class salesman : public employee
+class salesman : virtual public employee
 {
     double commission;
+
+protected:
+    void acceptSaleman()
+    {
+        cout<<"Enter the commission : ";
+        cin>>commission;
+    }
+    void displaySalesman()
+    {
+        cout<<"commision : "<<commission<<endl;
+    }
 public:
     salesman()
     {
-        cout<<"salesman()";
+       
     }
     salesman(double commision, int id, double salary)
     {
-
+        this->commission = commision;
     }
     void setCommision(double commision)
     {
-
+        this->commission=commision;
     }
     double getCommision()
     {
@@ -96,46 +125,53 @@ public:
     }
     void accept()
     {
-
+        employee::accept();
+        acceptSaleman();
     }
     void display()
     {
-
+        employee::display();
+        displaySalesman();
     }
-
-    void acceptSaleman()
-    {
- 
-    }
-    void displaySalesman()
-    {
-        
-    }
+   
 };
-class salesmanger : manger, salesman
+
+class salesmanger : public manger, public salesman
 {
     
 public:
     salesmanger()
     {
-        cout<<"salesmanger()";
+        
     }
-    salesmanger(int, double, double, double)
+    salesmanger(int id , double salary, double bonus, double commision): employee(id, salary)
     {
-        cout<<"salesmanger()";
+
     }
     void accept()
     {
-
+        employee::accept();
+        this->acceptManger();
+        this->acceptSaleman();
     }
     void display()
-    {
-
+    {   
+        employee::display();
+        this->displayManger();
+        this->displaySalesman();
     }
 };
 
 int main()
 {
-    salesmanger s1();
+    employee *e= new salesmanger;
+    e->accept();
+
+    cout<<"***********************here are the employee details***********************"<<endl;
+    e->display();
+
+    salesman s;
+
     return 0;
 }
+
